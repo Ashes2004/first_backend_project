@@ -48,26 +48,17 @@ export const deleteProduct = async(req , res)=>{
 export const getAllProduct = async(req , res)=>{
     
     try{ 	 
-       
-       console.log(req.session.id);
-       req.session.get(req.session.id ,(err, sessionData)=>{
-        if(err)
-            {
-                console.log(err);
-                throw err;
-            }
-            console.log(sessionData);
-       });
-       console.log();
-        if(req.cookies.name && req.cookies.name === 'ashes'){
+       if(req.session.user){
+     
+        
         let product = await Shopitems.find() ;
         if(!product) return res.staus(404).send({error: "items not found"});
         
         return res.status(201).send(product);
-            }
-            else{
-                return res.status(400).send({message: "you need correct cookie"}); 
-            }
+       } 
+       else{
+        return res.status(400).send("You are not authenticated"); 
+       }
     }catch(error)
     {
         return res.status(400).send({error});
