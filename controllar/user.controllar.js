@@ -85,3 +85,8 @@ export const deleteUser = async (req, res) => {
     }
 };
 
+export const findAll = async(req , res)=>{
+    const usersList = await User.find();
+    if(!usersList) return res.staus(404).send({error:"Users not found"});
+    return res.status(200).send(usersList);
+ }

@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Ashes2004/expressjs_practice#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.4.4",
