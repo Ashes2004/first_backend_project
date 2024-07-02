@@ -48,8 +48,17 @@ export const deleteProduct = async(req , res)=>{
 export const getAllProduct = async(req , res)=>{
     
     try{ 	 
-        console.log(req.headers.cookie);
-        console.log(req.cookies);
+       
+       console.log(req.session.id);
+       req.session.get(req.session.id ,(err, sessionData)=>{
+        if(err)
+            {
+                console.log(err);
+                throw err;
+            }
+            console.log(sessionData);
+       });
+       console.log();
         if(req.cookies.name && req.cookies.name === 'ashes'){
         let product = await Shopitems.find() ;
         if(!product) return res.staus(404).send({error: "items not found"});
@@ -64,3 +73,5 @@ export const getAllProduct = async(req , res)=>{
         return res.status(400).send({error});
     }
 }
+
+

@@ -31,6 +31,7 @@ export const signin = async (req, res) => {
     if (!userfind) return res.status(404).send({ message: "User not found" });
 
     if (password === userfind.password) {
+        req.session.user = userfind;
         return res.status(200).send({ message: "User found and signed in successfully", user: userfind });
     } else {
         return res.status(400).send({ error: "Invalid credentials" });
