@@ -5,9 +5,11 @@ import useRoute from './routes/user.routes.js';
 import useProduct from './routes/shop.routes.js';
 import cookieParser from "cookie-parser";
 import session from "express-session";
+import cors from 'cors';
 import User from "./model/user.model.js";
 dotenv.config();
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 app.use(cookieParser());
