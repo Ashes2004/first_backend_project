@@ -23,9 +23,10 @@ app.use(
         
 }));
 
+const port = process.env.PORT || 3001;
 
-app.listen(3001 , ()=>{
-    console.log(`Server is running on port 3000`);
+app.listen( port , ()=>{
+    console.log(`Server is running on port ${port}`);
 });
 mongoose.connect(process.env.MONGO).then(()=>{
     console.log("Database connected");
