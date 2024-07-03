@@ -14,7 +14,7 @@ export const signup = async(req , res)=>{
        res.status(201).json({message : "user created successfully " , newUser});
     } catch (error) {
         console.log(error);
-        res.status(400).json(error);
+        res.status(400).json({message: "User Account already exist!!"});
     }
 }
 
